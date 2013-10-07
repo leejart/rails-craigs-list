@@ -1,7 +1,11 @@
 CraigsList::Application.routes.draw do
 
-  resources :posts
-  resources :categories
+  root 'categories#index'
+
+  resources :categories do
+    resources :posts
+  end
+
   resources :users
   resources :sessions
 
