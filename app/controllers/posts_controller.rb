@@ -1,13 +1,10 @@
 class PostsController < ApplicationController
 
   def create
-    category =  Category.find([:id])
-    @post = Post.new(post_params, category.id)
-    if @post.save
-      redirect_to posts_path
-    else
-      render :new
-    end
+    @category =  Category.find(params[:category_id])
+    @post = @category.posts.create(:title, :content, :price, :category_id, 
+                      user_id: current_user.id)
+    redirect_to category_posts_path
   end
 
   def destroy
@@ -20,11 +17,12 @@ class PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.all
+    category = Category.find(params[:category_id])
+    @posts = category.posts
   end
 
   def new
-    @post = Post.new
+    @category =  Category.find(params[:category_id])
   end
 
   def show
