@@ -4,7 +4,7 @@ class SessionsController < ApplicationController
     user = User.find_by(email: params[:email])
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
-      redirect_to posts_path
+      redirect_to categories_path
     else
       flash.now.alert = "fuck off and get your email straight!"
     end
@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
 
   def destroy
     session[:user_id] = nil
-    redirect_to posts_path
+    redirect_to categories_path
   end
 
   def new

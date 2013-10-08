@@ -1,0 +1,24 @@
+<div class="new_category">
+
+<%= form_for @category do |f| %>
+  <% if @category.errors.any? %>
+    <div class="error_messages">
+      <h3>Invalid!</h3>
+      <ul>
+        <% @category.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <p>
+    <%= f.label :name %> <br>
+    <%= f.text_field :name %>
+  </p>
+
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
+</div>
