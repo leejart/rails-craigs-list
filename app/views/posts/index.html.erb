@@ -6,7 +6,7 @@
   </tr>
   <% @posts.each do |post| %>
     <tr>
-      <td><%= link_to post.title, category_posts_path %></td>
+      <td><%= link_to post.title, category_post_path(@category, post) %></td>
     </tr>
   <% end %>
 </table>
